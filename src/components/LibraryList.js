@@ -6,8 +6,13 @@ import {connect} from 'react-redux';
 
 class LibraryList extends Component {
     render() {
+        console.log(this.props);
         return;
     };
 }
 
-export default connect()(LibraryList);
+const mapStatetoProps = state => {
+    return {libraries: state.libraries};
+};
+
+export default connect(mapStatetoProps)(LibraryList);
