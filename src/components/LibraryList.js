@@ -2,6 +2,7 @@
  * Created by Luteh on 12/06/2017.
  */
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class LibraryList extends Component {
     render() {
@@ -9,4 +10,4 @@ class LibraryList extends Component {
     };
 }
 
-export default LibraryList;
+export default connect()(LibraryList);
