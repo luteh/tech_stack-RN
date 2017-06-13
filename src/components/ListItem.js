@@ -8,6 +8,15 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 class ListItem extends Component {
+    renderDescriptions() {
+        const {library, selectedLibrary} = this.props;
+        if (library.id === selectedLibrary) {
+            return (
+                <Text>{library.description}</Text>
+            )
+        }
+    }
+
     render() {
         const {titleStyle} = styles;
         const {id, title} = this.props.library;
@@ -17,11 +26,17 @@ class ListItem extends Component {
                     <CardSection>
                         <Text style={titleStyle}>{title}</Text>
                     </CardSection>
+                    {this.renderDescriptions()}
                 </View>
             </TouchableWithoutFeedback>
+
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {selectedLibrary: state.selectedLibraryId}
+};
 
 const styles = {
     titleStyle: {
@@ -30,4 +45,4 @@ const styles = {
     }
 };
 
-export default connect(null, actions)(ListItem);
+export default connect(mapStateToProps, actions)(ListItem);
